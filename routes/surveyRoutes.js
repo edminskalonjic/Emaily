@@ -66,4 +66,8 @@ module.exports =  (app) => {
             res.status(422).send(err);
         }
     });
+
+    app.get('//api/surveys/:surveyId/:choice', (req, res) => {       
+        res.send('Thanks you for voting!');       
+    });
 }
