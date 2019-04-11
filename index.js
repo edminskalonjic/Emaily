@@ -1,12 +1,11 @@
 const express = require('express');
-const authRoutes = require('./routes/authRoutes');
-const billingRoutes = require('./routes/billingRoutes');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const CookieSession = require('cookie-session');
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 
@@ -29,8 +28,9 @@ app.use (CookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-authRoutes(app);
-billingRoutes(app);
+require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));

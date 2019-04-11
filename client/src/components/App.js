@@ -5,14 +5,14 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-import Surveys from './Surveys';
+import Dashboard from './Dashboard';
+import SurveyNew from './surveys/SurveyNew';
 
 
 class App extends React.Component{
     
     componentDidMount(){
         this.props.fetchUser();
-
     }
     render(){
         return (
@@ -21,7 +21,8 @@ class App extends React.Component{
                     <div>
                         <Header />
                         <Route path="/" exact component ={Landing} />
-                        <Route path = "/surveys" exact component = {Surveys} />
+                        <Route path = "/surveys" exact component = {Dashboard} />
+                        <Route path = "/surveys/new" exact component = {SurveyNew} />
                     </div>
                 </BrowserRouter>
             </div>
